@@ -9,7 +9,8 @@ import Defaultuser from "../assets/images/defaultuser.jpg";
 import { MdCalendarViewMonth, MdLocationOn, MdLink } from "react-icons/md";
 import { FaTwitterSquare, FaGithubSquare } from "react-icons/fa";
 import moment from "moment";
-
+const baseUrl= "https://interviewbook-backend.onrender.com"
+ 
 function Profile() {
   const userID = localStorage.getItem("_id");
   const [darkMode, setDarkMode] = useState("light");
@@ -27,7 +28,7 @@ function Profile() {
   useEffect(() => {
     setDarkMode(localStorage.getItem("darkMode"));
     axios
-      .get(`/getuser?userID=${userID}`)
+      .get(`${baseUrl}/getuser?userID=${userID}`)
       .then((res) => {
         if (res.data) {
           setName(res.data[0].name);

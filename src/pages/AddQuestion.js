@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
-
+const baseUrl= "https://interviewbook-backend.onrender.com"
+ 
 function AddQuestion() {
   const author = localStorage.getItem("name");
   const authorID = localStorage.getItem("_id");
@@ -209,7 +210,7 @@ function AddQuestion() {
       tags
     ) {
       axios
-        .post("/addquestion", {
+        .post(`${baseUrl}/addquestion`, {
           query: question.query,
           categoryID: question.categoryID,
           categoryName: categoryName,

@@ -10,6 +10,8 @@ import moment from "moment";
 import Close from "@mui/icons-material/Close";
 import LikesDislikes from "../components/LikesDislikes";
 import jsPDF from 'jspdf';
+const baseUrl= "https://interviewbook-backend.onrender.com"
+ 
 
 
 function Home() {
@@ -68,7 +70,7 @@ function Home() {
     let queryText = e.target.value.toLowerCase();
     if (queryText.length === 0) {
       axios
-        .get(`/getallquestions`)
+        .get(`${baseUrl}/getallquestions`)
         .then((res) => {
           if (res) {
             setQuestions(res.data);
@@ -98,7 +100,7 @@ function Home() {
 
   function showAnswers(id, query, tags) {
     axios
-      .get(`/getanswers?id=${id}`)
+      .get(`${baseUrl}/getanswers?id=${id}`)
       .then((res) => {
         if (res) {
           setAnswers(res.data);
@@ -116,7 +118,7 @@ function Home() {
   function hideAnswers() {
     if (questionID) {
       axios
-        .post(`/addview?id=${questionID}`, {
+        .post(`${baseUrl}/addview?id=${questionID}`, {
           /*adding 1 more */
           view: 1,
         })
@@ -137,7 +139,7 @@ function Home() {
 
   const getQuestions = (limit, skip) => {
     axios
-      .get(`/getallquestions?limit=${limit}&skip=${skip}`)
+      .get(`${baseUrl}/getallquestions?limit=${limit}&skip=${skip}`)
       .then((res) => {
         if (res) {
           setQuestions(res.data);
@@ -152,7 +154,7 @@ function Home() {
     e.preventDefault();
     if (ans && questionID && user && userID && query) {
       axios
-        .post(`/addanswer?id=${questionID}`, {
+        .post(`${baseUrl}/addanswer?id=${questionID}`, {
           answer: ans,
           user: user,
           userID: userID,
