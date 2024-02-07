@@ -1,6 +1,5 @@
 {
   "name": "interviewbook-client",
-  "homepage": "https://github.com/poornima005/InterviewBook-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
